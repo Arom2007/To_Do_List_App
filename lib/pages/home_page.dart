@@ -21,6 +21,8 @@ class HomePage extends StatefulWidget {
     // Checkbox was tapped
     void checkBoxChanged(bool? value, int index) {
       setState(() {
+        // When checkbox is tapped it sets the checkbox to the opposite of what it initially was
+        // Example if it was false before tap, it becomes true after tap so that box goes from unchecked to checked
         todoList[index][1] = !todoList[index][1];
       });
     }
