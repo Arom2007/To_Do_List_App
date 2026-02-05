@@ -31,7 +31,7 @@ class HomePage extends StatefulWidget {
     return Scaffold(
       backgroundColor: Colors.deepPurple[200],
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple[500],
+        backgroundColor: Colors.deepPurple[400],
         title: Text("T O  D O", style: TextStyle(color: Colors.white),),
         centerTitle: true,
         elevation: 0,
