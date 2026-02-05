@@ -11,7 +11,10 @@ class HomePage extends StatefulWidget {
 
   class _HomePageState extends State<HomePage> {
 
-  // List of to do tasks
+    // Text controller
+    final _controller = TextEditingController();
+
+    // List of to do tasks
     List todoList = [
       ["Wake Up", false],
       ["Eat Breakfast", false],
@@ -29,13 +32,25 @@ class HomePage extends StatefulWidget {
       });
     }
 
+    // Save new task
+    void saveNewTask() {
+      setState(() {
+        todoList.add([_controller.text, false]);
+      });
+      Navigator.of(context).pop();
+    }
+
 
     // Function to create new task
     void createNewTask() {
       showDialog(
           context: context,
           builder: (context) {
-            return DialogBox();
+            return DialogBox(
+              controller: _controller,
+              onSave: saveNewTask,
+              onCancel: () => Navigator.of(context).pop(), // Dismisses the add new task dialogue box
+            );
           }
       );
     }
