@@ -26,7 +26,8 @@ class DialogBox extends StatelessWidget {
             // Getting user input
             TextField(
               controller: controller,
-              decoration: InputDecoration(border: OutlineInputBorder(), hintText: "Add a new task"),
+              decoration: InputDecoration(border: OutlineInputBorder(), hintText: "Add a new task", ),
+              style: TextStyle(color: Colors.white),
             ),
 
             // Buttons (Save + Cancel)
