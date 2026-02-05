@@ -15,12 +15,7 @@ class HomePage extends StatefulWidget {
     final _controller = TextEditingController();
 
     // List of to do tasks
-    List todoList = [
-      ["Wake Up", false],
-      ["Eat Breakfast", false],
-      ["Take a Shit", false],
-      ["Brush Teeth", false]
-    ];
+    List todoList = [];
 
 
     // Checkbox was tapped
@@ -83,3 +78,4 @@ class HomePage extends StatefulWidget {
     );
   }
 }
+
