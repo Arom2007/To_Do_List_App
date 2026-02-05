@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_list_app/util/dialog_box.dart';
 import 'package:to_do_list_app/util/todo_tile.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,9 +13,10 @@ class HomePage extends StatefulWidget {
 
   // List of to do tasks
     List todoList = [
-      ["Make Tutorial", false],
-      ["Do Something", false]
-
+      ["Wake Up", false],
+      ["Eat Breakfast", false],
+      ["Take a Shit", false],
+      ["Brush Teeth", false]
     ];
 
 
@@ -26,6 +28,20 @@ class HomePage extends StatefulWidget {
         todoList[index][1] = !todoList[index][1];
       });
     }
+
+
+    // Function to create new task
+    void createNewTask() {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return DialogBox();
+          }
+      );
+    }
+
+
+    
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +51,10 @@ class HomePage extends StatefulWidget {
         title: Text("T O  D O", style: TextStyle(color: Colors.white),),
         centerTitle: true,
         elevation: 0,
+      ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: createNewTask,
+        child: Icon(Icons.add),
       ),
       body: ListView.builder(
         itemCount: todoList.length,
