@@ -69,7 +69,8 @@ class HomePage extends StatefulWidget {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.deepPurple[400],
-          onPressed: createNewTask,
+        hoverColor: Colors.deepPurple[500],
+        onPressed: createNewTask,
         child: Icon(Icons.add, color: Colors.white,),
       ),
       body: ListView.builder(
