@@ -52,6 +52,14 @@ class HomePage extends StatefulWidget {
     }
 
 
+    // Function to delete task via sliding todo tile
+    void deleteTask(int index) {
+      setState(() {
+        todoList.removeAt(index);
+      });
+    }
+
+
     
   @override
   Widget build(BuildContext context) {
@@ -72,7 +80,12 @@ class HomePage extends StatefulWidget {
       body: ListView.builder(
         itemCount: todoList.length,
         itemBuilder: (context, index) {
-          return ToDoTile(taskName: todoList[index][0], taskCompleted: todoList[index][1], onChanged: (value) => checkBoxChanged(value, index));
+          return ToDoTile(
+              taskName: todoList[index][0],
+              taskCompleted: todoList[index][1],
+              onChanged: (value) => checkBoxChanged(value, index),
+              deleteFunction: (context) => deleteTask(index),
+          );
         },
       )
 
