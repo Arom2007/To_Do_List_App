@@ -31,6 +31,7 @@ class HomePage extends StatefulWidget {
     void saveNewTask() {
       setState(() {
         todoList.add([_controller.text, false]);
+        _controller.clear();
       });
       Navigator.of(context).pop();
     }
@@ -78,4 +79,3 @@ class HomePage extends StatefulWidget {
     );
   }
 }
-
