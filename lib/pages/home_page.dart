@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:to_do_list_app/data/database.dart';
 import 'package:to_do_list_app/util/dialog_box.dart';
 import 'package:to_do_list_app/util/todo_tile.dart';
 
@@ -16,26 +17,24 @@ class HomePage extends StatefulWidget {
   // reference the hive box
     final _myBox = Hive.openBox("myBox");
 
+    ToDoDatabase db = ToDoDatabase();
+
     // Text controller
     final _controller = TextEditingController();
-
-    // List of to do tasks
-    List todoList = [];
-
 
     // Checkbox was tapped
     void checkBoxChanged(bool? value, int index) {
       setState(() {
         // When checkbox is tapped it sets the checkbox to the opposite of what it initially was
         // Example if it was false before tap, it becomes true after tap so that box goes from unchecked to checked
-        todoList[index][1] = !todoList[index][1];
+        db.todoList[index][1] = !db.todoList[index][1];
       });
     }
 
     // Save new task
     void saveNewTask() {
       setState(() {
-        todoList.add([_controller.text, false]);
+        db.todoList.add([_controller.text, false]);
         _controller.clear();
       });
       Navigator.of(context).pop();
@@ -60,7 +59,7 @@ class HomePage extends StatefulWidget {
     // Function to delete task via sliding todo tile
     void deleteTask(int index) {
       setState(() {
-        todoList.removeAt(index);
+        db.todoList.removeAt(index);
       });
     }
 
@@ -83,11 +82,11 @@ class HomePage extends StatefulWidget {
         child: Icon(Icons.add, color: Colors.white,),
       ),
       body: ListView.builder(
-        itemCount: todoList.length,
+        itemCount: db.todoList.length,
         itemBuilder: (context, index) {
           return ToDoTile(
-              taskName: todoList[index][0],
-              taskCompleted: todoList[index][1],
+              taskName: db.todoList[index][0],
+              taskCompleted: db.todoList[index][1],
               onChanged: (value) => checkBoxChanged(value, index),
               deleteFunction: (context) => deleteTask(index),
           );
