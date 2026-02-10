@@ -95,8 +95,8 @@ class HomePage extends StatefulWidget {
         elevation: 0,
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.deepPurple[400],
-        hoverColor: Colors.deepPurple[500],
+        backgroundColor: Colors.deepPurple[500],
+        hoverColor: Colors.deepPurple[700],
         onPressed: createNewTask,
         child: Icon(Icons.add, color: Colors.white,),
       ),
