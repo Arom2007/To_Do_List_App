@@ -45,6 +45,7 @@ class HomePage extends StatefulWidget {
         // Example if it was false before tap, it becomes true after tap so that box goes from unchecked to checked
         db.todoList[index][1] = !db.todoList[index][1];
       });
+      db.updateDataBase();
     }
 
     // Save new task
@@ -54,6 +55,7 @@ class HomePage extends StatefulWidget {
         _controller.clear();
       });
       Navigator.of(context).pop();
+      db.updateDataBase();
     }
 
 
@@ -77,6 +79,7 @@ class HomePage extends StatefulWidget {
       setState(() {
         db.todoList.removeAt(index);
       });
+      db.updateDataBase();
     }
 
 
