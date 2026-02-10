@@ -15,9 +15,22 @@ class HomePage extends StatefulWidget {
 
 
   // reference the hive box
-    final _myBox = Hive.openBox("myBox");
+    final _myBox = Hive.box("myBox");
 
-    ToDoDatabase db = ToDoDatabase();
+  // to reference todoList from database.dart
+  ToDoDatabase db = ToDoDatabase();
+
+
+  @override
+  void initState() {
+    // if this is the first time ever opening the app, then create default data
+    if (_myBox.get("TODOLIST") == null) {
+      db.createInitialData();
+    }
+
+
+    super.initState();
+  }
 
     // Text controller
     final _controller = TextEditingController();
