@@ -27,7 +27,10 @@ class HomePage extends StatefulWidget {
     if (_myBox.get("TODOLIST") == null) {
       db.createInitialData();
     }
-
+    else {
+      // if there already exists data (this is not the first time app is opened and tasks have already been added)
+      db.loadData();
+    }
 
     super.initState();
   }
