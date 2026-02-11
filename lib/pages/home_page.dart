@@ -74,7 +74,7 @@ class HomePage extends StatefulWidget {
     }
 
 
-    // Function to delete task via sliding todotile
+    // Function to delete task via sliding todo-tile
     void deleteTask(int index) {
       setState(() {
         db.todoList.removeAt(index);
